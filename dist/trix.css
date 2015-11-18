@@ -150,7 +150,7 @@ trix-editor [data-trix-mutable=true] {
     box-shadow: 0 0 0 2px highlight; }
 trix-editor .attachment {
   position: relative;
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin: 0;
   padding: 0;
