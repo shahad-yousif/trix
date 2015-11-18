@@ -133,6 +133,7 @@ Trix.registerElement "trix-editor", do ->
     makeEditable(this)
 
   attachedCallback: ->
+    console.log('hello')
     autofocus(this)
     @editorController ?= new Trix.EditorController(editorElement: this, html: @defaultValue = @value)
     @editorController.registerSelectionManager()

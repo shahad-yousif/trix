@@ -34,11 +34,11 @@ class Trix.PreviewableAttachmentView extends Trix.AttachmentView
       serializedAttributes = JSON.stringify(src: url)
       image.setAttribute("data-trix-serialized-attributes", serializedAttributes)
 
-    width = @attachment.getWidth()
-    height = @attachment.getHeight()
+    # width = @attachment.getWidth()
+    # height = @attachment.getHeight()
 
-    image.width = width if width?
-    image.height = height if height?
+    # image.width = width if width?
+    # image.height = height if height?
 
   # Attachment delegate
 

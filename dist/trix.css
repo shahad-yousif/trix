@@ -216,7 +216,8 @@ trix-editor .attachment {
   white-space: pre-wrap;
   color: #666;
   border-radius: 5px;
-  background-color: #ccc; }
+  background-color: #eee;
+  border: 1px solid #ccc; }
 .trix-content ul, .trix-content ol, .trix-content li {
   margin: 0;
   padding: 0; }
@@ -227,4 +228,5 @@ trix-editor .attachment {
   .trix-content figure progress {
     width: 100%; }
   .trix-content figure img {
-    border-radius: 5px; }
+    border-radius: 5px;
+    max-width: 100%; }
