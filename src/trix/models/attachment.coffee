@@ -65,6 +65,7 @@ class Trix.Attachment extends Trix.Object
 
   getHref: ->
     @attributes.get("href")
+    null
 
   getFilename: ->
     @attributes.get("filename") ? ""

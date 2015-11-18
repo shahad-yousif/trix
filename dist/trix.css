@@ -6,9 +6,8 @@ http://trix-editor.org/
 */
 trix-editor {
   color: #111;
-  border: 1px solid #bbb;
   border-radius: 5px;
-  margin: 0;
+  margin: 5px 0px 0px 0px;
   padding: 4px 8px;
   min-height: 54px;
   outline: none;
@@ -224,7 +223,7 @@ trix-editor .attachment {
   .trix-content ul li, .trix-content ol li, .trix-content li li {
     margin-left: 20px; }
 .trix-content figure {
-  margin-top: 5px; }
+  margin: 5px 0px 0px 0px; }
   .trix-content figure progress {
     width: 100%; }
   .trix-content figure img {
