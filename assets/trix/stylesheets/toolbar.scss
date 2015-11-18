@@ -34,6 +34,7 @@ trix-toolbar {
       background: #fff;
       border: none;
       border-bottom: 1px solid #ddd;
+      cursor: pointer;
 
       &::before {
         display: inline-block;

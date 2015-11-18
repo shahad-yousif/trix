@@ -20,6 +20,9 @@ Trix.Piece.registerType "attachment", class Trix.AttachmentPiece extends Trix.Pi
   isSerializable: ->
     not @attachment.isPending()
 
+  setCaption: ->
+    @attributes.set("caption") ? ""
+
   getCaption: ->
     @attributes.get("caption") ? ""
 

@@ -21,7 +21,7 @@ class Trix.AttachmentView extends Trix.ObjectView
     else
       figure.appendChild(node) for node in @createContentNodes()
 
-    figure.appendChild(@createCaptionElement())
+    # figure.appendChild(@createCaptionElement())
 
     data =
       trixAttachment: JSON.stringify(@attachment)
