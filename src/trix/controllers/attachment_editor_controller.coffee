@@ -38,8 +38,8 @@ class Trix.AttachmentEditorController extends Trix.BasicObject
       textContent: lang.remove, 
       className: classNames.attachment.removeButton, 
       attributes: { href: "#", title: lang.remove }
-      data:
-        trixSerialize: false
+      # data:
+      #   trixSerialize: false
     )
     handleEvent("click", onElement: removeButton, withCallback: @didClickRemoveButton)
     do: => @element.appendChild(removeButton)
