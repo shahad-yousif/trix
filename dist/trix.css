@@ -11,13 +11,17 @@ trix-editor {
   margin: 0;
   padding: 4px 8px;
   min-height: 54px;
-  outline: none; }
+  outline: none;
+  background-color: #efefef;
+  border: 2px solid #888; }
 trix-toolbar * {
   box-sizing: border-box; }
+trix-toolbar .button_groups {
+  font-size: 0; }
 trix-toolbar .button_group {
   display: inline-block;
   font-size: 0;
-  margin: 0 8px 4px 0;
+  margin: 0px 5px 0px 0px;
   border: 1px solid #bbb;
   border-top-color: #ccc;
   border-bottom-color: #888;
