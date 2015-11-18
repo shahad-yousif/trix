@@ -7,7 +7,7 @@ http://trix-editor.org/
 trix-editor {
   color: #111;
   border: 1px solid #bbb;
-  border-radius: 3px;
+  border-radius: 5px;
   margin: 0;
   padding: 4px 8px;
   min-height: 54px;
@@ -39,7 +39,8 @@ trix-toolbar .button_group {
     width: 40px;
     background: #fff;
     border: none;
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #ddd;
+    cursor: pointer; }
     trix-toolbar .button_group button::before, trix-toolbar .button_group input[type=button]::before {
       display: inline-block;
       position: absolute;
@@ -202,16 +203,25 @@ trix-editor .attachment {
 .trix-content blockquote {
   margin: 0 0 0 5px;
   padding: 0 0 0 10px;
+  color: #666;
   border-left: 5px solid #ccc; }
 .trix-content pre {
-  font-family: monospace;
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
   font-size: 12px;
   margin: 0;
   padding: 10px;
   white-space: pre-wrap;
-  background-color: #eee; }
+  color: #666;
+  border-radius: 5px;
+  background-color: #ccc; }
 .trix-content ul, .trix-content ol, .trix-content li {
   margin: 0;
   padding: 0; }
   .trix-content ul li, .trix-content ol li, .trix-content li li {
     margin-left: 20px; }
+.trix-content figure {
+  margin-top: 5px; }
+  .trix-content figure progress {
+    width: 100%; }
+  .trix-content figure img {
+    border-radius: 5px; }
