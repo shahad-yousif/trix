@@ -2,6 +2,9 @@ Trix.config.blockAttributes = attributes =
   default:
     tagName: "div"
     parse: false
+  figure:
+    tagName: "figure"
+    parse: false
   quote:
     tagName: "blockquote"
     nestable: true
