@@ -12,6 +12,7 @@ class Trix.PreviewableAttachmentView extends Trix.AttachmentView
       tagName: "img"
       attributes:
         src: ""
+        'ng-retryable': 2
       data:
         trixMutable: true
         trixStoreKey: @attachment.getCacheKey("imageElement")

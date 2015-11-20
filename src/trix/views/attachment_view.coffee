@@ -34,14 +34,18 @@ class Trix.AttachmentView extends Trix.ObjectView
 
     if @attachment.isPending()
       @progressElement = makeElement
-        tagName: "progress"
+        tagName: "div"
         attributes:
           class: classNames.attachment.progressBar
-          value: @attachment.getUploadProgress()
-          max: 100
         data:
           trixMutable: true
           trixStoreKey: @attachment.getCacheKey("progressElement")
+      progressBar = makeElement 
+        tagName: "div"
+        attributes:
+          class: "bar"
+            
+      @progressElement.appendChild(progressBar)
 
       figure.appendChild(@progressElement)
       data.trixSerialize = false
@@ -92,14 +96,14 @@ class Trix.AttachmentView extends Trix.ObjectView
         trixCursorTarget: true
         trixSerialize: false
 
-  findProgressElement: ->
-    @findElement()?.querySelector("progress")
+  findProgressBarElement: ->
+    @findElement()?.querySelector(".progress .bar")
 
   # Attachment delegate
 
   attachmentDidChangeUploadProgress: ->
     value = @attachment.getUploadProgress()
-    @findProgressElement()?.value = value
+    @findProgressBarElement()?.style.height = "#{100 - parseInt(value)}%"
 
 htmlContainsTagName = (html, tagName) ->
   div = makeElement("div")

@@ -29,6 +29,31 @@ trix-editor {
     color: #666;
     font-size: 13px;
 
+    .progress {
+      display: flex;
+      justify-content: center; /* align horizontal */
+      align-items: center; /* align vertical */
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      z-index: 1;
+
+      .bar {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        opacity: 0.9;
+        filter: alpha(opacity=90); /* For IE8 and earlier */
+        z-index: 2;
+      }
+    }
+
     .remove {
       display: block;
       position: absolute;
@@ -45,6 +70,7 @@ trix-editor {
       background-color: #fff;
       border: 1px solid #bbb;
       box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+      z-index: 2;
 
       &:after {
         content: '×';
