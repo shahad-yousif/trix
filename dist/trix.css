@@ -11,7 +11,7 @@ trix-editor {
   padding: 4px 8px;
   min-height: 54px;
   outline: none;
-  background-color: #efefef;
+  background-color: #fff;
   border: 2px solid #888; }
 trix-toolbar * {
   box-sizing: border-box; }
@@ -156,6 +156,30 @@ trix-editor .attachment {
   padding: 0;
   color: #666;
   font-size: 13px; }
+  trix-editor .attachment .progress {
+    display: flex;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1; }
+    trix-editor .attachment .progress .bar {
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      opacity: 0.9;
+      filter: alpha(opacity=90);
+      /* For IE8 and earlier */
+      z-index: 2; }
   trix-editor .attachment .remove {
     display: block;
     position: absolute;
@@ -171,7 +195,8 @@ trix-editor .attachment {
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #bbb;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1); }
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2; }
     trix-editor .attachment .remove:after {
       content: '×';
       font-size: 18px;
