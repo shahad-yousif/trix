@@ -17,7 +17,6 @@ class Trix.Operation extends Trix.BasicObject
       @perform (@succeeded, result) =>
         @performing = false
         @performed = true
-
         if @succeeded
           resolve(result)
         else

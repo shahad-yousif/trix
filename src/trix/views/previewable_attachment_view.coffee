@@ -1,6 +1,6 @@
 #= require trix/views/attachment_view
 
-{defer, makeElement, measureElement} = Trix
+{defer, makeElement, measureElement, safelyAddQueryString} = Trix
 
 class Trix.PreviewableAttachmentView extends Trix.AttachmentView
   constructor: ->
@@ -12,7 +12,6 @@ class Trix.PreviewableAttachmentView extends Trix.AttachmentView
       tagName: "img"
       attributes:
         src: ""
-        'ng-retryable': 2
       data:
         trixMutable: true
         trixStoreKey: @attachment.getCacheKey("imageElement")

@@ -16,6 +16,39 @@
       document.addEventListener("trix-initialize", function(event) {
         Trix.Inspector.install(event.target);
       });
+
+      document.addEventListener(
+        "trix-attachment-add",
+        function(event) {
+          attachment = event.attachment
+          if (!event.attachment.file) { return } 
+
+          setTimeout(
+            function() { attachment.setUploadProgress(30) },
+            1000
+          ) 
+
+          setTimeout(
+            function() { attachment.setUploadProgress(60) },
+            2000
+          ) 
+
+          setTimeout(
+            function() { attachment.setUploadProgress(90) },
+            3000
+          ) 
+
+          setTimeout(
+            function() {  
+              attachment.setAttributes({
+                url: "https://developer.cdn.mozilla.net/static/img/mdn10/logo-sprite@2x.c87e5baf1d2209.png",
+                href: "https://developer.cdn.mozilla.net/static/img/mdn10/logo-sprite@2x.c87e5baf1d3309.png"
+              })
+            },
+            4000
+          ) 
+        }
+      )
     </script>
   </head>
   <body>

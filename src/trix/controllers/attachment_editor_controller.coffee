@@ -86,7 +86,7 @@ class Trix.AttachmentEditorController extends Trix.BasicObject
 
   didClickCaption: (event) =>
     event.preventDefault()
-    @editCaption()
+    # @editCaption()
 
   didChangeCaption: (event) =>
     caption = event.target.value.replace(/\s/g, " ").trim()

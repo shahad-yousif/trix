@@ -15,6 +15,14 @@ Trix.extend
 
     {added, removed}
 
+  safelyAddQueryString: (url, queryString) ->
+    splitter = if url.split('?')[1]
+      '&'
+    else
+      '?'
+    url += splitter + queryString;
+    url
+
 utf16StringDifferences = (a, b) ->
   return ["", ""] if a.isEqualTo(b)
 
