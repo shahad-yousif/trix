@@ -134,9 +134,9 @@ class Trix.Attachment extends Trix.Object
     @preload(@getURL(), @releaseFile)
 
   preloadFile: ->
-    if @file
+    # if @file
       # @fileObjectURL = URL.createObjectURL(@file)
-      @preload("/assets/images/2/uploading.png")
+      # @preload(@fileObjectURL)
 
   releasePreloadedFile: ->
     if @fileObjectURL

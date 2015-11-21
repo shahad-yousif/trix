@@ -103,7 +103,7 @@ class Trix.AttachmentView extends Trix.ObjectView
 
   attachmentDidChangeUploadProgress: ->
     value = @attachment.getUploadProgress()
-    @findProgressBarElement()?.style.height = "#{100 - parseInt(value)}%"
+    @findProgressBarElement()?.innerHTML = "#{value}%"
 
 htmlContainsTagName = (html, tagName) ->
   div = makeElement("div")

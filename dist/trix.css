@@ -162,24 +162,19 @@ trix-editor .attachment {
     /* align horizontal */
     align-items: center;
     /* align vertical */
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
+    width: 128px;
+    height: 128px;
     text-align: center;
-    z-index: 1; }
+    z-index: 1;
+    background-color: #777;
+    border: 5px solid #333;
+    border-radius: 5px; }
     trix-editor .attachment .progress .bar {
-      position: absolute;
-      left: 0px;
-      bottom: 0px;
-      width: 100%;
-      height: 100%;
-      background-color: #333;
-      opacity: 0.97;
-      filter: alpha(opacity=97);
-      /* For IE8 and earlier */
-      z-index: 2; }
+      display: inline-block;
+      color: #efefef;
+      font-size: 36px;
+      font-weight: bold;
+      font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New; }
   trix-editor .attachment .remove {
     display: block;
     position: absolute;
