@@ -116,6 +116,7 @@ Trix.registerElement "trix-editor", do ->
       when "document-change"
         @documentChangedSinceLastRender = true
       when "render"
+        console.log("render", @documentChangedSinceLastRender)
         if @documentChangedSinceLastRender
           @documentChangedSinceLastRender = false
           @notify("change")

@@ -122,6 +122,7 @@ class Trix.EditorController extends Trix.Controller
     @editorElement.notify("sync")
 
   compositionControllerDidRender: ->
+    console.log("didrender")
     if @requestedLocationRange?
       if @documentWhenLocationRangeRequested.isEqualTo(@composition.document)
         @selectionManager.setLocationRange(@requestedLocationRange)
