@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="angular">
   <head>
     <meta charset="UTF-8">
     <title>Trix</title>
@@ -17,8 +17,54 @@
         Trix.Inspector.install(event.target);
       });
     </script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   </head>
-  <body>
-    <trix-editor autofocus class="trix-content"></trix-editor>
+  <body ng-controller="TestController">
+    <textarea id="test2" ng-model="content" rows="10" cols="50"></textarea>
+    <textarea id="test" ng-model="content" rows="10" cols="50"></textarea>
+    <trix-editor autofocus class="trix-content" input="test"></trix-editor>
   </body>
+  <script>
+    angular.module('angular', [])
+      .controller(
+        'TestController',
+        [
+          '$scope', '$http', '$timeout',
+          function($scope, $http, $timeout) {
+            console.log($scope)
+          }
+        ]
+      )
+
+document.addEventListener(
+  "trix-change",
+  function() {
+    $('#test').trigger('change')
+  }
+)
+
+document.addEventListener(
+  "trix-attachment-add",
+  function(event) {
+    attachment = event.attachment
+    if (!event.attachment.file) { return; }
+
+    setTimeout(
+      function() { attachment.setUploadProgress(0) },
+      0
+    )
+
+    setTimeout(
+      function() {
+        attachment.setAttributes({
+          url: "http://i.ndtvimg.com/auto/makers/29/205/suzuki-swift-2011-front-view.jpg",
+          href: "http://i.ndtvimg.com/auto/makers/29/205/suzuki-swift-2011-front-view.jpg"
+        })
+      },
+      1000
+    )
+  }
+)
+  </script>
 </html>
