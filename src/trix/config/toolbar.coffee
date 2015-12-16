@@ -16,6 +16,7 @@ Trix.config.toolbar =
       <span class="button_group block_tools">
         <button type="button" class="quote" data-attribute="quote" title="#{lang.quote}">#{lang.quote}</button>
         <button type="button" class="code" data-attribute="code" title="#{lang.code}">#{lang.code}</button>
+        <button type="button" class="inline-code" data-attribute="inlineCode" title="#{lang.inlineCode}">#{lang.inlineCode}</button>
         <button type="button" class="list bullets" data-attribute="bullet" title="#{lang.bullets}">#{lang.bullets}</button>
         <button type="button" class="list numbers" data-attribute="number" title="#{lang.numbers}">#{lang.numbers}</button>
         <!--
@@ -24,10 +25,12 @@ Trix.config.toolbar =
         -->
       </span>
 
-      <span class="button_group history_tools">
-        <button type="button" class="undo" data-action="undo" data-key="z" title="#{lang.undo}">#{lang.undo}</button>
-        <button type="button" class="redo" data-action="redo" data-key="shift+z" title="#{lang.redo}">#{lang.redo}</button>
-      </span>
+      <!--
+        <span class="button_group history_tools">
+          <button type="button" class="undo" data-action="undo" data-key="z" title="#{lang.undo}">#{lang.undo}</button>
+          <button type="button" class="redo" data-action="redo" data-key="shift+z" title="#{lang.redo}">#{lang.redo}</button>
+        </span>
+      -->
     </div>
 
     <div class="dialogs">

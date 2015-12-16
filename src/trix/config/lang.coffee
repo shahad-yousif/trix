@@ -6,6 +6,7 @@ Trix.config.lang =
   bytes: "Bytes"
   captionPlaceholder: "Type a caption here…"
   code: "Code"
+  inlineCode: "Inline code"
   editCaption: "Edit caption"
   indent: "Increase Level"
   italic: "Italic"

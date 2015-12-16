@@ -123,6 +123,8 @@ trix-toolbar .button_group button.quote::before {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPHBhdGggZD0iTTYgMTdoM2wyLTR2LTZoLTZ2Nmgzek0xNCAxN2gzbDItNHYtNmgtNnY2aDN6IiBmaWxsPSIjMDAwIj48L3BhdGg%2BCjwvc3ZnPgo%3D); }
 trix-toolbar .button_group button.code::before {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KPHBhdGggZD0iTTE4LjE3IDEybC0zLjE3IDMuMTcgMS40MTUgMS40MTUgNC41ODUtNC41ODUtNC41ODUtNC41ODUtMS40MTUgMS40MTUgMy4xNyAzLjE3ek01LjgzIDEybDMuMTctMy4xNy0xLjQxNS0xLjQxNS00LjU4NSA0LjU4NSA0LjU4NSA0LjU4NSAxLjQxNS0xLjQxNS0zLjE3LTMuMTd6IiBmaWxsPSIjMDAwIj48L3BhdGg%2BCjwvc3ZnPgo%3D); }
+trix-toolbar .button_group button.inline-code::before {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDIwIDE2Ij4KPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTEzIDExLjVsMS41IDEuNSA1LTUtNS01LTEuNSAxLjUgMy41IDMuNXoiPjwvcGF0aD4KPHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTcgNC41bC0xLjUtMS41LTUgNSA1IDUgMS41LTEuNS0zLjUtMy41eiI%2BPC9wYXRoPgo8cGF0aCBmaWxsPSIjMDAwMDAwIiBkPSJNMTAuOTU4IDIuMzUybDEuMDg1IDAuMjk2LTMgMTEtMS4wODUtMC4yOTYgMy0xMXoiPjwvcGF0aD4KPC9zdmc%2BCg%3D%3D); }
 trix-toolbar .button_group button.bullets::before {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgd2lkdGg9IjI0cHgiIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BCiAgPHBhdGggaWQ9IlNoYXBlIiBmaWxsPSIjMDAwIiBkPSJtNCA0Yy0xLjEwNjcgMC0yIDAuODkzMy0yIDJzMC44OTMzIDIgMiAyIDItMC44OTMzIDItMi0wLjg5MzMtMi0yLTJ6bTAgNmMtMS4xMDY3IDAtMiAwLjg5My0yIDJzMC44OTMzIDIgMiAyIDItMC44OTMgMi0yLTAuODkzMy0yLTItMnptMCA2Yy0xLjEwNjcgMC0yIDAuODkzLTIgMnMwLjg5MzMgMiAyIDIgMi0wLjg5MyAyLTItMC44OTMzLTItMi0yem00IDNoMTR2LTJoLTE0djJ6bTAtNmgxNHYtMmgtMTR2MnptMC04djJoMTR2LTJoLTE0eiIvPgo8L3N2Zz4K); }
 trix-toolbar .button_group button.numbers::before {
@@ -223,30 +225,52 @@ trix-editor .attachment {
     padding: 0 16px;
     border: 1px solid #bbb;
     border-radius: 5px; }
-.trix-content blockquote {
-  margin: 0 0 0 5px;
-  padding: 0 0 0 10px;
-  color: #666;
-  border-left: 5px solid #ccc; }
-.trix-content pre {
-  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
-  font-size: 12px;
-  margin: 0;
-  padding: 10px;
-  white-space: pre-wrap;
-  color: #666;
-  border-radius: 5px;
-  background-color: #eee;
-  border: 1px solid #ccc; }
-.trix-content ul, .trix-content ol, .trix-content li {
-  margin: 0;
-  padding: 0; }
-  .trix-content ul li, .trix-content ol li, .trix-content li li {
-    margin-left: 20px; }
-.trix-content figure {
-  margin: 5px 0px 0px 0px; }
-  .trix-content figure progress {
-    width: 100%; }
-  .trix-content figure img {
+.trix-content {
+  color: #333;
+  font-family: "Helvetica Neue",Arial,"Liberation Sans",FreeSans,sans-serif;
+  font-size: 16px;
+  font-weight: 300; }
+  .trix-content blockquote {
+    margin: 0px;
+    padding: 0 0 0 10px;
+    color: #666;
+    border-left: 5px solid #ccc; }
+  .trix-content a {
+    text-decoration: none;
+    border-bottom: 1px dotted #888; }
+  .trix-content pre {
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+    font-size: 12px;
+    margin: 5px 0px;
+    padding: 10px;
+    white-space: pre-wrap;
+    color: #fff;
     border-radius: 5px;
-    max-width: 100%; }
+    background-color: #565656; }
+    .trix-content pre a {
+      color: #AAEEEE;
+      text-decoration: none;
+      border-bottom: 1px dotted #888; }
+      .trix-content pre a:visited {
+        color: #EEAAEE; }
+  .trix-content code {
+    display: inline;
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 3px;
+    background-color: #565656;
+    padding: 2px 4px;
+    margin: 0px 4px; }
+  .trix-content ul, .trix-content ol, .trix-content li {
+    margin: 0;
+    padding: 0; }
+    .trix-content ul li, .trix-content ol li, .trix-content li li {
+      margin-left: 20px; }
+  .trix-content figure {
+    margin: 5px 0px 0px 0px; }
+    .trix-content figure progress {
+      width: 100%; }
+    .trix-content figure img {
+      border-radius: 5px;
+      max-width: 100%; }
