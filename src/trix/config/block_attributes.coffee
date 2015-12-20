@@ -10,6 +10,7 @@ Trix.config.blockAttributes = attributes =
     nestable: true
   code:
     tagName: "pre"
+    indentWithTab: true
     text:
       plaintext: true
   bulletList:

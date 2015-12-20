@@ -269,7 +269,11 @@ class Trix.InputController extends Trix.BasicObject
       @responder?.insertLineBreak()
 
     tab: (event) ->
-      if @responder?.canIncreaseBlockAttributeLevel()
+      if @responder?.canIncreaseIndent()
+        @responder?.increaseIndent()
+        @requestRender()
+        event.preventDefault()
+      else if @responder?.canIncreaseBlockAttributeLevel()
         @responder?.increaseBlockAttributeLevel()
         @requestRender()
         event.preventDefault()
@@ -305,7 +309,11 @@ class Trix.InputController extends Trix.BasicObject
         @responder?.insertString("\n")
 
       tab: (event) ->
-        if @responder?.canDecreaseBlockAttributeLevel()
+        if @responder?.canDecreaseIndent()
+          @responder?.decreaseIndent()
+          @requestRender()
+          event.preventDefault()
+        else if @responder?.canDecreaseBlockAttributeLevel()
           @responder?.decreaseBlockAttributeLevel()
           @requestRender()
           event.preventDefault()

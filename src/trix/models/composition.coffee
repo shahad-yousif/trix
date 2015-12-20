@@ -114,7 +114,7 @@ class Trix.Composition extends Trix.BasicObject
         else
           @insertString("\n")
     else
-      @insertString("\n")
+      @insertBlockBreak()
 
   insertHTML: (html) ->
     startPosition = @getPosition()
@@ -242,6 +242,7 @@ class Trix.Composition extends Trix.BasicObject
 
   setBlockAttribute: (attributeName, value) ->
     return unless selectedRange = @getSelectedRange()
+    console.log(selectedRange, attributeName, value)
     @setDocument(@document.applyBlockAttributeAtRange(attributeName, value, selectedRange))
     @setSelection(selectedRange)
 
@@ -283,6 +284,24 @@ class Trix.Composition extends Trix.BasicObject
     startPosition = @document.positionFromLocation(index: index, offset: 0)
     endPosition = @document.positionFromLocation(index: endIndex, offset: 0)
     @setDocument(@document.removeLastListAttributeAtRange([startPosition, endPosition]))
+
+  increaseIndent: ->
+    return unless block = @getBlock()
+    console.log(@getSelectedRange(), @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange()))
+    console.log("increaseIndent")
+
+  decreaseIndent: ->
+    return unless block = @getBlock()
+    console.log(block)
+    console.log("decreaseIndent")
+
+  canIncreaseIndent: ->
+    return unless block = @getBlock()
+    indentWithTab = block.getConfig("indentWithTab")
+    if indentWithTab?
+      indentWithTab
+
+  canDecreaseIndent: -> @canIncreaseIndent()
 
   canIncreaseBlockAttributeLevel: ->
     return unless block = @getBlock()
