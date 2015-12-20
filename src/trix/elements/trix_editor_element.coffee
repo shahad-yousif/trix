@@ -1,7 +1,7 @@
 #= require trix/elements/trix_toolbar_element
 #= require trix/controllers/editor_controller
 
-{makeElement, triggerEvent, handleEvent, handleEventOnce, defer} = Trix
+{makeElement, selectionElements, triggerEvent, handleEvent, handleEventOnce, defer} = Trix
 
 {attachmentSelector} = Trix.AttachmentView
 
@@ -61,6 +61,8 @@ Trix.registerElement "trix-editor", do ->
       left: -9999px;
       max-height: 0px;
     }
+
+    %t #{selectionElements.selector} { #{selectionElements.cssText} }
   """
 
   # Properties
@@ -131,11 +133,12 @@ Trix.registerElement "trix-editor", do ->
     makeEditable(this)
 
   attachedCallback: ->
-    autofocus(this)
-    @editorController ?= new Trix.EditorController(editorElement: this, html: @defaultValue = @value)
-    @editorController.registerSelectionManager()
-    @registerResetListener()
-    requestAnimationFrame => @notify("initialize")
+    unless @hasAttribute("data-trix-internal")
+      autofocus(this)
+      @editorController ?= new Trix.EditorController(editorElement: this, html: @defaultValue = @value)
+      @editorController.registerSelectionManager()
+      @registerResetListener()
+      requestAnimationFrame => @notify("initialize")
 
   detachedCallback: ->
     @editorController?.unregisterSelectionManager()

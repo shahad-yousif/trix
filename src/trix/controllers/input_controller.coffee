@@ -2,7 +2,7 @@
 #= require trix/operations/file_verification_operation
 
 {handleEvent, findClosestElementFromNode, findElementFromContainerAndOffset,
-  defer, makeElement, innerElementIsActive, summarizeStringChange} = Trix
+  defer, makeElement, innerElementIsActive, summarizeStringChange, objectsAreEqual} = Trix
 
 class Trix.InputController extends Trix.BasicObject
   pastedFileCount = 0
@@ -56,12 +56,14 @@ class Trix.InputController extends Trix.BasicObject
   # Mutation observer delegate
 
   elementDidMutate: (mutationSummary) ->
-    @handleInput ->
-      unless @mutationIsExpected(mutationSummary)
-        @responder?.replaceHTML(@element.innerHTML)
-      @resetInputSummary()
-      @requestRender()
-      Trix.selectionChangeObserver.reset()
+    unless @inputSummary.composing
+      @handleInput ->
+        unless @mutationIsExpected(mutationSummary)
+          @responder?.replaceHTML(@element.innerHTML)
+
+        @resetInputSummary()
+        @requestRender()
+        Trix.selectionChangeObserver.reset()
 
   mutationIsExpected: (mutationSummary) ->
     if @inputSummary
@@ -90,15 +92,13 @@ class Trix.InputController extends Trix.BasicObject
 
       if keyName = @constructor.keyNames[event.keyCode]
         context = @keys
+
         for modifier in ["ctrl", "alt", "shift", "meta"] when event["#{modifier}Key"]
           modifier = "control" if modifier is "ctrl"
-          context = @keys[modifier]
-          if context[keyName]
-            keyModifier = modifier
-            break
+          context = context?[modifier]
 
-        if context[keyName]?
-          @setInputSummary({keyName, keyModifier})
+        if context?[keyName]?
+          @setInputSummary({keyName})
           Trix.selectionChangeObserver.reset()
           context[keyName].call(this, event)
 
@@ -137,8 +137,8 @@ class Trix.InputController extends Trix.BasicObject
     dragover: (event) ->
       if @draggedRange or @canAcceptDataTransfer(event.dataTransfer)
         event.preventDefault()
-        draggingPoint = [event.clientX, event.clientY]
-        if draggingPoint.toString() isnt @draggingPoint?.toString()
+        draggingPoint = x: event.clientX, y: event.clientY
+        unless objectsAreEqual(draggingPoint, @draggingPoint)
           @draggingPoint = draggingPoint
           @delegate?.inputControllerDidReceiveDragOverPoint?(@draggingPoint)
 
@@ -151,8 +151,8 @@ class Trix.InputController extends Trix.BasicObject
       event.preventDefault()
       files = event.dataTransfer?.files
 
-      point = [event.clientX, event.clientY]
-      @responder?.setLocationRangeFromPoint(point)
+      point = x: event.clientX, y: event.clientY
+      @responder?.setLocationRangeFromPointRange(point)
 
       if files?.length
         @attachFiles(files)
@@ -225,31 +225,34 @@ class Trix.InputController extends Trix.BasicObject
       event.preventDefault()
 
     compositionstart: (event) ->
+      if @inputSummary.eventName is "keypress" and @inputSummary.textAdded
+        @responder?.deleteInDirection("left")
+
       unless @selectionIsExpanded()
-        textAdded = @responder?.insertPlaceholder()
-        @setInputSummary({textAdded})
+        @responder?.insertPlaceholder()
         @requestRender()
 
-      @setInputSummary(composing: true, compositionStart: event.data)
+      compositionRange = @responder?.getSelectedRange()
+      @setInputSummary({compositionRange, compositionStart: event.data, composing: true})
 
     compositionupdate: (event) ->
-      if @responder?.selectPlaceholder()
+      if compositionRange = @responder?.selectPlaceholder()
+        @setInputSummary({compositionRange})
         @responder?.forgetPlaceholder()
 
-      @setInputSummary(composing: true, compositionUpdate: event.data)
+      @setInputSummary(compositionUpdate: event.data)
 
     compositionend: (event) ->
-      if @responder?.selectPlaceholder()
-        @responder?.forgetPlaceholder()
+      {compositionStart, compositionRange} = @inputSummary
 
-      {compositionStart} = @inputSummary
-      {data} = event
-
-      if compositionStart? and data? and compositionStart isnt data
+      if compositionStart? and compositionRange?
         @delegate?.inputControllerWillPerformTyping()
-        @responder?.insertString(data)
-        {added, removed} = summarizeStringChange(compositionStart, data)
-        @setInputSummary(textAdded: added, didDelete: Boolean(removed))
+        @responder?.setSelectedRange(compositionRange)
+        @responder?.insertString(event.data)
+        @setInputSummary(preferDocument: true)
+
+      @responder?.forgetPlaceholder()
+      @setInputSummary(composing: false)
 
     input: (event) ->
       event.stopPropagation()
