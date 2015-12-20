@@ -1,14 +1,4 @@
 trix-editor {
-  a[data-trix-attachment] {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover,
-    &:visited:hover {
-      color: inherit;
-    }
-  }
-
   [data-trix-mutable=true] {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -83,17 +73,6 @@ trix-editor {
     }
 
     .caption {
-      display: block;
-      margin: 4px auto 0 auto;
-      padding: 0;
-      text-align: center;
-
-      .size {
-        &:before {
-          content: ' · ';
-        }
-      }
-
       &.caption-editing {
         textarea {
           width: 100%;
@@ -108,14 +87,6 @@ trix-editor {
           -moz-appearance: none;
         }
       }
-    }
-
-    &.attachment-file {
-      color: #333;
-      line-height: 30px;
-      padding: 0 16px;
-      border: 1px solid #bbb;
-      border-radius: 5px;
     }
   }
 }

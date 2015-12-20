@@ -1,4 +1,4 @@
-{makeElement} = Trix
+{makeElement, selectionElements} = Trix
 {classNames} = Trix.config.css
 
 class Trix.AttachmentView extends Trix.ObjectView
@@ -59,7 +59,7 @@ class Trix.AttachmentView extends Trix.ObjectView
     element.dataset[key] = value for key, value of data
     element.setAttribute("contenteditable", false)
 
-    [@createCursorTarget(), element, @createCursorTarget()]
+    [selectionElements.create("cursorTarget"), element, selectionElements.create("cursorTarget")]
 
   createCaptionElement: ->
     figcaption = makeElement(tagName: "figcaption", className: classNames.attachment.caption)
@@ -87,14 +87,6 @@ class Trix.AttachmentView extends Trix.ObjectView
   getHref: ->
     unless htmlContainsTagName(@attachment.getContent(), "a")
       @attachment.getHref()
-
-  createCursorTarget: ->
-    makeElement
-      tagName: "span"
-      textContent: Trix.ZERO_WIDTH_SPACE
-      data:
-        trixCursorTarget: true
-        trixSerialize: false
 
   findProgressBarElement: ->
     @findElement()?.querySelector(".progress .bar")

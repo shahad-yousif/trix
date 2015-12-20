@@ -14,7 +14,7 @@ Trix.extend
       handler.destroy() if times? and --times is 0
       target = Trix.findClosestElementFromNode(event.target, matchingSelector: selector)
       if target?
-        withCallback?.call(target, event, target) 
+        withCallback?.call(target, event, target)
         event.preventDefault() if preventDefault
 
     handler.destroy = ->
