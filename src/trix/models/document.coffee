@@ -170,11 +170,13 @@ class Trix.Document extends Trix.Object
     end = range[1]
     @blockList = @blockList.consolidate()
     blockList = @blockList
+    first = true
     @eachBlockAtRange range, (block, textRange, index) ->
-      if block.getConfig("tagName") == "pre"
+      if block.getConfig("tagName") == "pre" and first
+        first = false
         blockList = blockList.editObjectAtIndex index, ->
           {text, indentedRange} = block.text.indent(textRange)
-          end += indentedRange[1] - textRange[1]
+          end = range[0] + indentedRange[1] - indentedRange[0]
           block.copyWithText(text)
     {
       document: new @constructor blockList
@@ -186,11 +188,13 @@ class Trix.Document extends Trix.Object
     end = range[1]
     @blockList = @blockList.consolidate()
     blockList = @blockList
+    first = true
     @eachBlockAtRange range, (block, textRange, index) ->
-      if block.getConfig("tagName") == "pre"
+      if block.getConfig("tagName") == "pre" && first
+        first = false
         blockList = blockList.editObjectAtIndex index, ->
           {text, indentedRange} = block.text.dedent(textRange)
-          end += indentedRange[1] - textRange[1]
+          end = range[0] + indentedRange[1] - indentedRange[0]
           block.copyWithText(text)
     {
       document: new @constructor blockList
@@ -377,6 +381,19 @@ class Trix.Document extends Trix.Object
 
   eachBlock: (callback) ->
     @blockList.eachObject(callback)
+
+  findBlockInRange: (range, conditionCallback) ->
+    result = null
+    @eachBlockAtRange range, (block, textRange, index) =>
+      if conditionCallback(block) && !result?
+        start = @positionFromLocation(
+          index: index
+          offset: 0
+        )
+        result = 
+          block: block
+          range: [start + textRange[0], start + textRange[1]]
+    result
 
   eachBlockAtRange: (range, callback) ->
     [startPosition, endPosition] = range = normalizeRange(range)

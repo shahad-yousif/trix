@@ -285,22 +285,28 @@ class Trix.Composition extends Trix.BasicObject
     @setDocument(@document.removeLastListAttributeAtRange([startPosition, endPosition]))
 
   indent: ->
-    return unless block = @getBlock()
-    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange())
+    origRange = @document.rangeFromLocationRange(@getLocationRange())
+    result = @document.findBlockInRange origRange, (block) ->
+      block.getConfig("tagName") == "pre"
+    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(result.range)
     result = document.indent(range)
     @setDocument(result.document)
     @setSelection(result.indentedRange)
 
   dedent: ->
-    return unless block = @getBlock()
-    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange())
+    origRange = @document.rangeFromLocationRange(@getLocationRange())
+    result = @document.findBlockInRange origRange, (block) ->
+      block.getConfig("tagName") == "pre"
+    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(result.range)
     result = document.dedent(range)
     @setDocument(result.document)
     @setSelection(result.indentedRange)
 
   canIndent: ->
-    return unless block = @getBlock()
-    block.getConfig("tagName") == "pre"
+    range = @document.rangeFromLocationRange(@getLocationRange())
+    result = @document.findBlockInRange range, (block) ->
+      block.getConfig("tagName") == "pre"
+    result?
 
   canDedent: -> @canIndent()
 

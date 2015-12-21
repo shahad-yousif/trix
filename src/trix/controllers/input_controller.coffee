@@ -273,13 +273,13 @@ class Trix.InputController extends Trix.BasicObject
 
     tab: (event) ->
       if @responder?.canIndent()
+        @delegate?.inputControllerWillMoveText()
         @responder?.indent()
         @requestRender()
-        event.preventDefault()
       else if @responder?.canIncreaseBlockAttributeLevel()
         @responder?.increaseBlockAttributeLevel()
         @requestRender()
-        event.preventDefault()
+      event.preventDefault()
 
     left: (event) ->
       if @selectionIsInCursorTarget()
@@ -313,13 +313,13 @@ class Trix.InputController extends Trix.BasicObject
 
       tab: (event) ->
         if @responder?.canDedent()
+          @delegate?.inputControllerWillPerformTyping()
           @responder?.dedent()
           @requestRender()
-          event.preventDefault()
         else if @responder?.canDecreaseBlockAttributeLevel()
           @responder?.decreaseBlockAttributeLevel()
           @requestRender()
-          event.preventDefault()
+        event.preventDefault()
 
       left: (event) ->
         if @selectionIsInCursorTarget()

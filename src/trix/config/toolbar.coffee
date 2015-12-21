@@ -25,12 +25,10 @@ Trix.config.toolbar =
         -->
       </span>
 
-      <!--
-        <span class="button_group history_tools">
-          <button type="button" class="undo" data-action="undo" data-key="z" title="#{lang.undo}">#{lang.undo}</button>
-          <button type="button" class="redo" data-action="redo" data-key="shift+z" title="#{lang.redo}">#{lang.redo}</button>
-        </span>
-      -->
+      <span class="button_group history_tools">
+        <button type="button" class="undo" data-action="undo" data-key="z" title="#{lang.undo}">#{lang.undo}</button>
+        <button type="button" class="redo" data-action="redo" data-key="shift+z" title="#{lang.redo}">#{lang.redo}</button>
+      </span>
     </div>
 
     <div class="dialogs">

@@ -36,6 +36,7 @@ class Trix.Text extends Trix.Object
 
   indent: (range) -> 
     [objects, leftIndex, rightIndex] = @pieceList.splitObjectsAtRange(range)
+    rightIndex = Math.min(rightIndex, objects.length - 2)
     indentFirst = if leftIndex == 0
       true
     else
@@ -57,6 +58,7 @@ class Trix.Text extends Trix.Object
     
   dedent: (range) -> 
     [objects, leftIndex, rightIndex] = @pieceList.splitObjectsAtRange(range)
+    rightIndex = Math.min(rightIndex, objects.length - 2)
     length = 0
     indentedPieces = for i in [leftIndex..rightIndex]
       s = objects[i].toString()
