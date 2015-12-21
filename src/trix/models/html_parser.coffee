@@ -107,10 +107,11 @@ class Trix.HTMLParser extends Trix.BasicObject
       @processedElements.push(element)
     else
       switch tagName(element)
-        when "br"
-          unless @isExtraBR(element)
-            @appendStringWithAttributes("\n", getTextAttributes(element))
-          @processedElements.push(element)
+        # We don't want <br> at all
+        # when "br"
+          # unless @isExtraBR(element)
+          #   @appendStringWithAttributes("\n", @getTextAttributes(element))
+          # @processedElements.push(element)
         when "img"
           attributes = url: element.getAttribute("src"), contentType: "image"
           attributes[key] = value for key, value of getImageDimensions(element)

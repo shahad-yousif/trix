@@ -34,6 +34,41 @@ class Trix.Text extends Trix.Object
   appendText: (text) ->
     @insertTextAtPosition(text, @getLength())
 
+  indent: (range) -> 
+    [objects, leftIndex, rightIndex] = @pieceList.splitObjectsAtRange(range)
+    indentFirst = if leftIndex == 0
+      true
+    else
+      s = objects[leftIndex - 1].toString()
+      s.match(/\s+$/)?
+    length = 0
+    indentedPieces = for i in [leftIndex..rightIndex]
+      s = objects[i].toString()
+      s = "  #{s}" if indentFirst
+      s = s.replace(/\n([^$])/g, "\n  $1")
+      indentFirst = s.match(/\s+$/)?
+      length += s.length
+      new Trix.StringPiece(s)
+    modified = new Trix.SplittableList(objects.slice(0, leftIndex).concat(indentedPieces).concat(objects.slice(rightIndex + 1))).consolidate()
+    {
+      text: @copyWithPieceList(modified)
+      indentedRange: [range[0], range[0] + length]
+    }
+    
+  dedent: (range) -> 
+    [objects, leftIndex, rightIndex] = @pieceList.splitObjectsAtRange(range)
+    length = 0
+    indentedPieces = for i in [leftIndex..rightIndex]
+      s = objects[i].toString()
+      s = s.replace(/(^|\n)  /g, "$1")
+      length += s.length
+      new Trix.StringPiece(s)
+    modified = new Trix.SplittableList(objects.slice(0, leftIndex).concat(indentedPieces).concat(objects.slice(rightIndex + 1))).consolidate()
+    {
+      text: @copyWithPieceList(modified)
+      indentedRange: [range[0], range[0] + length]
+    }
+
   insertTextAtPosition: (text, position) ->
     @copyWithPieceList @pieceList.insertSplittableListAtPosition(text.pieceList, position)
 

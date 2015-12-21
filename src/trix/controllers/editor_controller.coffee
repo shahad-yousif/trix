@@ -45,7 +45,6 @@ class Trix.EditorController extends Trix.Controller
   # Composition delegate
 
   compositionDidChangeDocument: (document) ->
-    console.log("compositionDidChangeDocument")
     @editorElement.notify("document-change")
     @render() unless @handlingInput
 

@@ -103,7 +103,10 @@ class Trix.Block extends Trix.Object
     @text.getLength()
 
   canBeConsolidatedWith: (block) ->
-    not @hasAttributes() and not block.hasAttributes()
+    # not @hasAttributes() and not block.hasAttributes()
+    attrs = @getAttributes()
+    otherAttrs = block.getAttributes()
+    attrs[0] == otherAttrs[0]
 
   consolidateWith: (block) ->
     newlineText = Trix.Text.textForStringWithAttributes("\n")

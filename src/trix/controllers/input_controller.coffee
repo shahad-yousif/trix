@@ -272,8 +272,8 @@ class Trix.InputController extends Trix.BasicObject
       @responder?.insertLineBreak()
 
     tab: (event) ->
-      if @responder?.canIncreaseIndent()
-        @responder?.increaseIndent()
+      if @responder?.canIndent()
+        @responder?.indent()
         @requestRender()
         event.preventDefault()
       else if @responder?.canIncreaseBlockAttributeLevel()
@@ -312,8 +312,8 @@ class Trix.InputController extends Trix.BasicObject
         @responder?.insertString("\n")
 
       tab: (event) ->
-        if @responder?.canDecreaseIndent()
-          @responder?.decreaseIndent()
+        if @responder?.canDedent()
+          @responder?.dedent()
           @requestRender()
           event.preventDefault()
         else if @responder?.canDecreaseBlockAttributeLevel()

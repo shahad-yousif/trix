@@ -165,6 +165,38 @@ class Trix.Document extends Trix.Object
 
     result.insertDocumentAtRange(document, position)
 
+  indent: (range) ->
+    start = range[0]
+    end = range[1]
+    @blockList = @blockList.consolidate()
+    blockList = @blockList
+    @eachBlockAtRange range, (block, textRange, index) ->
+      if block.getConfig("tagName") == "pre"
+        blockList = blockList.editObjectAtIndex index, ->
+          {text, indentedRange} = block.text.indent(textRange)
+          end += indentedRange[1] - textRange[1]
+          block.copyWithText(text)
+    {
+      document: new @constructor blockList
+      indentedRange: [start, end]
+    }
+
+  dedent: (range) ->
+    start = range[0]
+    end = range[1]
+    @blockList = @blockList.consolidate()
+    blockList = @blockList
+    @eachBlockAtRange range, (block, textRange, index) ->
+      if block.getConfig("tagName") == "pre"
+        blockList = blockList.editObjectAtIndex index, ->
+          {text, indentedRange} = block.text.dedent(textRange)
+          end += indentedRange[1] - textRange[1]
+          block.copyWithText(text)
+    {
+      document: new @constructor blockList
+      indentedRange: [start, end]
+    }
+
   addAttributeAtRange: (attribute, value, range) ->
     blockList = @blockList
     @eachBlockAtRange range, (block, textRange, index) ->

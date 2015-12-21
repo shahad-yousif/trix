@@ -242,7 +242,6 @@ class Trix.Composition extends Trix.BasicObject
 
   setBlockAttribute: (attributeName, value) ->
     return unless selectedRange = @getSelectedRange()
-    console.log(selectedRange, attributeName, value)
     @setDocument(@document.applyBlockAttributeAtRange(attributeName, value, selectedRange))
     @setSelection(selectedRange)
 
@@ -285,23 +284,25 @@ class Trix.Composition extends Trix.BasicObject
     endPosition = @document.positionFromLocation(index: endIndex, offset: 0)
     @setDocument(@document.removeLastListAttributeAtRange([startPosition, endPosition]))
 
-  increaseIndent: ->
+  indent: ->
     return unless block = @getBlock()
-    console.log(@getSelectedRange(), @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange()))
-    console.log("increaseIndent")
+    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange())
+    result = document.indent(range)
+    @setDocument(result.document)
+    @setSelection(result.indentedRange)
 
-  decreaseIndent: ->
+  dedent: ->
     return unless block = @getBlock()
-    console.log(block)
-    console.log("decreaseIndent")
+    {document, range} = @document.expandRangeToLineBreaksAndSplitBlocks(@getSelectedRange())
+    result = document.dedent(range)
+    @setDocument(result.document)
+    @setSelection(result.indentedRange)
 
-  canIncreaseIndent: ->
+  canIndent: ->
     return unless block = @getBlock()
-    indentWithTab = block.getConfig("indentWithTab")
-    if indentWithTab?
-      indentWithTab
+    block.getConfig("tagName") == "pre"
 
-  canDecreaseIndent: -> @canIncreaseIndent()
+  canDedent: -> @canIndent()
 
   canIncreaseBlockAttributeLevel: ->
     return unless block = @getBlock()
