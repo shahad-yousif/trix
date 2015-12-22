@@ -235,7 +235,7 @@ trix-editor .attachment {
   .trix-content pre {
     font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 20px;
     padding: 10px;
     white-space: pre-wrap;
     color: #fff;
@@ -258,8 +258,7 @@ trix-editor .attachment {
     padding: 0px 4px;
     margin: 0px 4px; }
   .trix-content ul, .trix-content ol, .trix-content li {
-    padding: 0px;
-    line-height: 26px; }
+    padding: 0px; }
     .trix-content ul li, .trix-content ol li, .trix-content li li {
       margin-left: 20px; }
   .trix-content progress {
@@ -284,7 +283,6 @@ trix-editor .attachment {
     font-size: 0; }
     .trix-content .attachment.attachment-file {
       color: #333;
-      line-height: 30px;
       padding: 0 16px;
       border: 1px solid #bbb;
       border-radius: 5px; }
