@@ -46,10 +46,10 @@ for code, name of Trix.InputController.keyNames
     else
       callback()
 
-@pressKey = (keyName, callback) ->
+@pressKeyWithModifier = (keyName, modifier, callback) ->
   element = document.activeElement
   code = keyCodes[keyName]
-  properties = which: code, keyCode: code, charCode: 0
+  properties = which: code, keyCode: code, charCode: 0, "#{modifier}Key": true
 
   return callback() unless triggerEvent(element, "keydown", properties)
 
@@ -57,6 +57,9 @@ for code, name of Trix.InputController.keyNames
     defer ->
       triggerEvent(element, "keyup", properties)
       defer(callback)
+
+@pressKey = (keyName, callback) -> @pressKeyWithModifier(keyName, null, callback)
+
 
 @startComposition = (data, callback) ->
   element = document.activeElement

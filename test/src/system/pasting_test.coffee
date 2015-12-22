@@ -61,7 +61,7 @@ editorTest "paste list into quote", (done) ->
     typeCharacters "abc", ->
       pasteContent "text/html", "<ul><li>one</li><li>two</li></ul>", ->
         document = getDocument()
-        equal document.getBlockCount(), 3
+        equal document.getBlockCount(), 2
 
         block = document.getBlockAtIndex(0)
         deepEqual block.getAttributes(), ["quote"]
@@ -69,11 +69,7 @@ editorTest "paste list into quote", (done) ->
 
         block = document.getBlockAtIndex(1)
         deepEqual block.getAttributes(), ["quote", "bulletList", "bullet"]
-        equal block.toString(), "one\n"
-
-        block = document.getBlockAtIndex(2)
-        deepEqual block.getAttributes(), ["quote", "bulletList", "bullet"]
-        equal block.toString(), "two\n"
+        equal block.toString(), "one\ntwo\n"
 
         done()
 

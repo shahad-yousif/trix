@@ -153,12 +153,12 @@ removeWhitespace = (string) ->
     html: "<blockquote>#{blockComment}<br></blockquote>"
 
   "image attachment": do ->
-    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 98203, contentType: "image/png", width: 1, height: 1
+    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 98203, contentType: "image/png"
     attachment = new Trix.Attachment attrs
     text = Trix.Text.textForAttachmentWithAttributes(attachment)
 
     key = attachment.getCacheKey("imageElement")
-    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key, width: 1, height: 1)
+    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key)
 
     caption = Trix.makeElement(tagName: "figcaption", className: classNames.attachment.caption)
     caption.innerHTML = """#{attrs.filename} <span class="#{classNames.attachment.size}">95.9 KB</span>"""
@@ -175,7 +175,7 @@ removeWhitespace = (string) ->
     figure.dataset[key] = value for key, value of data
     figure.setAttribute("contenteditable", false)
     figure.appendChild(image)
-    figure.appendChild(caption)
+    # figure.appendChild(caption) # we do not have caption
 
     serializedFigure = figure.cloneNode(true)
     for attribute in ["data-trix-id", "data-trix-mutable", "data-trix-store-key", "contenteditable"]
@@ -190,12 +190,12 @@ removeWhitespace = (string) ->
   "text with newlines and image attachment": do ->
     stringText = Trix.Text.textForStringWithAttributes("a\nb")
 
-    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 98203, contentType: "image/png", width: 1, height: 1
+    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 98203, contentType: "image/png"
     attachment = new Trix.Attachment attrs
     attachmentText = Trix.Text.textForAttachmentWithAttributes(attachment)
 
     key = attachment.getCacheKey("imageElement")
-    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key, width: 1, height: 1)
+    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key)
 
     caption = Trix.makeElement(tagName: "figcaption", className: classNames.attachment.caption)
     caption.innerHTML = """#{attrs.filename} <span class="#{classNames.attachment.size}">95.9 KB</span>"""
@@ -212,7 +212,7 @@ removeWhitespace = (string) ->
     figure.dataset[key] = value for key, value of data
     figure.setAttribute("contenteditable", false)
     figure.appendChild(image)
-    figure.appendChild(caption)
+    # figure.appendChild(caption) # we do not have caption
 
     serializedFigure = figure.cloneNode(true)
     for attribute in ["data-trix-id", "data-trix-mutable", "data-trix-store-key", "contenteditable"]
@@ -227,13 +227,13 @@ removeWhitespace = (string) ->
     document: new Trix.Document [new Trix.Block text]
 
   "image attachment with edited caption": do ->
-    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 123, contentType: "image/png", width: 1, height: 1
+    attrs = url: TEST_IMAGE_URL, filename: "example.png", filesize: 123, contentType: "image/png"
     attachment = new Trix.Attachment attrs
     textAttrs = caption: "Example"
     text = Trix.Text.textForAttachmentWithAttributes(attachment, textAttrs)
 
     key = attachment.getCacheKey("imageElement")
-    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key, width: 1, height: 1)
+    image = Trix.makeElement("img", src: attrs.url, "data-trix-mutable": true, "data-trix-store-key": key)
 
     caption = Trix.makeElement(tagName: "figcaption", className: "#{classNames.attachment.caption} #{classNames.attachment.captionEdited}", textContent: "Example")
 
@@ -250,63 +250,63 @@ removeWhitespace = (string) ->
     figure.dataset[key] = value for key, value of data
     figure.setAttribute("contenteditable", false)
     figure.appendChild(image)
-    figure.appendChild(caption)
+    # figure.appendChild(caption) # we do not have caption
 
     html: "<div>#{blockComment}#{cursorTarget}#{figure.outerHTML}#{cursorTarget}</div>"
     document: new Trix.Document [new Trix.Block text]
 
-  "file attachment": do ->
-    attrs = href: "http://example.com/example.pdf", filename: "example.pdf", filesize: 34038769, contentType: "application/pdf"
-    attachment = new Trix.Attachment attrs
-    text = Trix.Text.textForAttachmentWithAttributes(attachment)
+  # "file attachment": do ->
+  #   attrs = href: "http://example.com/example.pdf", filename: "example.pdf", filesize: 34038769, contentType: "application/pdf"
+  #   attachment = new Trix.Attachment attrs
+  #   text = Trix.Text.textForAttachmentWithAttributes(attachment)
 
-    figure = Trix.makeElement
-      tagName: "figure"
-      className: "attachment attachment-file pdf"
+  #   figure = Trix.makeElement
+  #     tagName: "figure"
+  #     className: "attachment attachment-file pdf"
 
-    data =
-      trixAttachment: JSON.stringify(attachment)
-      trixContentType: "application/pdf"
-      trixId: attachment.id
+  #   data =
+  #     trixAttachment: JSON.stringify(attachment)
+  #     trixContentType: "application/pdf"
+  #     trixId: attachment.id
 
-    link = Trix.makeElement("a", href: attrs.href)
-    link.dataset[key] = value for key, value of data
-    link.setAttribute("contenteditable", false)
-    link.appendChild(figure)
+  #   link = Trix.makeElement("a", href: attrs.href)
+  #   link.dataset[key] = value for key, value of data
+  #   link.setAttribute("contenteditable", false)
+  #   link.appendChild(figure)
 
-    caption = """<figcaption class="#{classNames.attachment.caption}">#{attrs.filename} <span class="#{classNames.attachment.size}">32.46 MB</span></figcaption>"""
-    figure.innerHTML = caption
+  #   caption = """<figcaption class="#{classNames.attachment.caption}">#{attrs.filename} <span class="#{classNames.attachment.size}">32.46 MB</span></figcaption>"""
+  #   figure.innerHTML = caption
 
-    html: """<div>#{blockComment}#{cursorTarget}#{link.outerHTML}#{cursorTarget}</div>"""
-    document: new Trix.Document [new Trix.Block text]
+  #   html: """<div>#{blockComment}#{cursorTarget}#{link.outerHTML}#{cursorTarget}</div>"""
+  #   document: new Trix.Document [new Trix.Block text]
 
-  "content attachment": do ->
-    content = """<blockquote class="twitter-tweet" data-cards="hidden"><p>ruby-build 20150413 is out, with definitions for 2.2.2, 2.1.6, and 2.0.0-p645 to address recent security issues: <a href="https://t.co/YEwV6NtRD8">https://t.co/YEwV6NtRD8</a></p>&mdash; Sam Stephenson (@sstephenson) <a href="https://twitter.com/sstephenson/status/587715996783218688">April 13, 2015</a></blockquote>"""
-    href = "https://twitter.com/sstephenson/status/587715996783218688"
-    contentType = "embed/twitter"
+  # "content attachment": do ->
+  #   content = """<blockquote class="twitter-tweet" data-cards="hidden"><p>ruby-build 20150413 is out, with definitions for 2.2.2, 2.1.6, and 2.0.0-p645 to address recent security issues: <a href="https://t.co/YEwV6NtRD8">https://t.co/YEwV6NtRD8</a></p>&mdash; Sam Stephenson (@sstephenson) <a href="https://twitter.com/sstephenson/status/587715996783218688">April 13, 2015</a></blockquote>"""
+  #   href = "https://twitter.com/sstephenson/status/587715996783218688"
+  #   contentType = "embed/twitter"
 
-    attachment = new Trix.Attachment {content, contentType, href}
-    text = Trix.Text.textForAttachmentWithAttributes(attachment)
+  #   attachment = new Trix.Attachment {content, contentType, href}
+  #   text = Trix.Text.textForAttachmentWithAttributes(attachment)
 
-    figure = Trix.makeElement
-      tagName: "figure"
-      className: "attachment attachment-content"
+  #   figure = Trix.makeElement
+  #     tagName: "figure"
+  #     className: "attachment attachment-content"
 
-    figure.innerHTML = content
+  #   figure.innerHTML = content
 
-    caption = Trix.makeElement(tagName: "figcaption", className: classNames.attachment.caption)
-    figure.appendChild(caption)
+  #   caption = Trix.makeElement(tagName: "figcaption", className: classNames.attachment.caption)
+  #   figure.appendChild(caption)
 
-    data =
-      trixAttachment: JSON.stringify(attachment)
-      trixContentType: contentType
-      trixId: attachment.id
+  #   data =
+  #     trixAttachment: JSON.stringify(attachment)
+  #     trixContentType: contentType
+  #     trixId: attachment.id
 
-    figure.dataset[key] = value for key, value of data
-    figure.setAttribute("contenteditable", false)
+  #   figure.dataset[key] = value for key, value of data
+  #   figure.setAttribute("contenteditable", false)
 
-    html: """<div>#{blockComment}#{cursorTarget}#{figure.outerHTML}#{cursorTarget}</div>"""
-    document: new Trix.Document [new Trix.Block text]
+  #   html: """<div>#{blockComment}#{cursorTarget}#{figure.outerHTML}#{cursorTarget}</div>"""
+  #   document: new Trix.Document [new Trix.Block text]
 
   "nested quote and code formatted block":
     document: createDocument(["ab3", {}, ["quote", "code"]])

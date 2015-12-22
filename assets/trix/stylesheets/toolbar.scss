@@ -17,10 +17,6 @@ trix-toolbar {
     border-radius: 5px;
     overflow: hidden;
 
-    &.history_tools {
-      display: none;
-    }
-
     &:last-of-type {
       margin-right: 0;
     }

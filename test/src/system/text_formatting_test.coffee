@@ -55,16 +55,16 @@ editorTest "removing a link", (done) ->
         expectAttributes([0, 2], {})
         done()
 
-editorTest "applying a link to an attachment with a host-provided href", (done) ->
-  text = fixtures["file attachment"].document.getBlockAtIndex(0).getTextWithoutBlockBreak()
-  insertText(text)
-  typeCharacters "a", ->
-    ok not isToolbarButtonDisabled(attribute: "href")
-    expandSelection "left", ->
-      ok not isToolbarButtonDisabled(attribute: "href")
-      expandSelection "left", ->
-        ok isToolbarButtonDisabled(attribute: "href")
-        done()
+# editorTest "applying a link to an attachment with a host-provided href", (done) ->
+#   text = fixtures["file attachment"].document.getBlockAtIndex(0).getTextWithoutBlockBreak()
+#   insertText(text)
+#   typeCharacters "a", ->
+#     ok not isToolbarButtonDisabled(attribute: "href")
+#     expandSelection "left", ->
+#       ok not isToolbarButtonDisabled(attribute: "href")
+#       expandSelection "left", ->
+#         ok isToolbarButtonDisabled(attribute: "href")
+#         done()
 
 editorTest "typing after a link", (done) ->
   typeCharacters "ab", ->

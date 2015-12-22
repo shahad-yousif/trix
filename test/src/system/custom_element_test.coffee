@@ -166,12 +166,11 @@ editorTest "element triggers custom focus and blur events", (done) ->
       insertImageAttachment()
       after 20, ->
         clickElement element.querySelector("figure"), ->
-          clickElement element.querySelector("figcaption"), ->
-            defer ->
-              equal document.activeElement, element.querySelector("textarea")
-              equal blurEventCount, 1
-              equal focusEventCount, 1
-              done()
+          defer ->
+            equal document.activeElement, document.querySelector("trix-editor")
+            equal blurEventCount, 1
+            equal focusEventCount, 1
+            done()
 
 editorTest "editor resets to its original value on form reset", (expectDocument) ->
   element = getEditorElement()
