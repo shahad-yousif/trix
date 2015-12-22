@@ -244,13 +244,14 @@ trix-editor .attachment {
       .trix-content pre a:visited {
         color: #EEAAEE; }
   .trix-content code {
-    display: inline;
+    display: inline-block;
     font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
     font-size: 12px;
+    line-height: 18px;
     color: #fff;
     border-radius: 3px;
     background-color: #565656;
-    padding: 2px 4px;
+    padding: 0px 4px;
     margin: 0px 4px; }
   .trix-content ul, .trix-content ol, .trix-content li {
     padding: 0px;
