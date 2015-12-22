@@ -212,16 +212,20 @@ trix-editor .attachment {
   color: #333;
   font-family: "Helvetica Neue",Arial,"Liberation Sans",FreeSans,sans-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 26px;
   font-weight: 300; }
+  @media (max-width: 420px) {
+    .trix-content {
+      font-size: 16px;
+      line-height: 24px; } }
   .trix-content > * {
-    margin: 15px 0px; }
+    margin: 24px 0px; }
     .trix-content > *:first-child {
       margin-top: 0px; }
     .trix-content > *:last-child {
       margin-bottom: 0px; }
   .trix-content blockquote {
-    margin: 15px 0px;
+    margin: 24px 0px;
     padding: 0 0 0 10px;
     color: #666;
     border-left: 5px solid #ccc; }
@@ -255,12 +259,13 @@ trix-editor .attachment {
     margin: 0px 4px; }
   .trix-content ul, .trix-content ol, .trix-content li {
     padding: 0px;
-    line-height: 22px; }
+    line-height: 26px; }
     .trix-content ul li, .trix-content ol li, .trix-content li li {
       margin-left: 20px; }
   .trix-content progress {
     width: 100%; }
   .trix-content img {
+    display: block;
     border-radius: 5px;
     max-width: 100%;
     height: auto; }
@@ -276,7 +281,7 @@ trix-editor .attachment {
     margin: 0;
     padding: 0;
     color: #666;
-    font-size: 13px; }
+    font-size: 0; }
     .trix-content .attachment.attachment-file {
       color: #333;
       line-height: 30px;

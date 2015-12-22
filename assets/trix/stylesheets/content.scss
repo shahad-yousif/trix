@@ -2,11 +2,16 @@
   color: #333;
   font-family: "Helvetica Neue",Arial,"Liberation Sans",FreeSans,sans-serif;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 26px;
   font-weight: 300;
 
+  @media (max-width: 420px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   > * {
-    margin: 15px 0px;
+    margin: 24px 0px;
 
     &:first-child {
       margin-top: 0px;
@@ -18,7 +23,7 @@
   }
 
   blockquote {
-    margin: 15px 0px; // might be nested
+    margin: 24px 0px; // might be nested
     padding: 0 0 0 10px;
     color: #666;
     border-left: 5px solid #ccc
@@ -62,7 +67,7 @@
 
   ul, ol, li {
     padding: 0px;
-    line-height: 22px;
+    line-height: 26px;
 
     li {
       margin-left: 20px;
@@ -74,6 +79,7 @@
   }
 
   img {
+    display: block;
     border-radius: 5px;
     max-width: 100%;
     height: auto;
@@ -96,7 +102,7 @@
     margin: 0;
     padding: 0;
     color: #666;
-    font-size: 13px;
+    font-size: 0;
 
     &.attachment-file {
       color: #333;
