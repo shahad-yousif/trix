@@ -1,4 +1,6 @@
 trix-toolbar {
+  background-color: #cecece;
+
   * {
     box-sizing: border-box;
   }
@@ -7,14 +9,18 @@ trix-toolbar {
     font-size: 0;
   }
 
+  .history_tools, .block-level {
+    display: none !important;
+  }
+
   .button_group {
     display: inline-block;
     font-size: 0;
-    margin: 0px 5px 0px 0px;
-    border: 1px solid #bbb;
-    border-top-color: #ccc;
-    border-bottom-color: #888;
-    border-radius: 5px;
+    # margin: 0px 5px 0px 0px;
+    # border: 1px solid #bbb;
+    # border-top-color: #ccc;
+    # border-bottom-color: #888;
+    # border-radius: 5px;
     overflow: hidden;
 
     &:last-of-type {
@@ -33,11 +39,12 @@ trix-toolbar {
       position: relative;
       font-size: 0;
       margin: 0;
+      padding: 0;
       height: 28px;
       width: 40px;
-      background: #fff;
+      background-color: #cecece;
       border: none;
-      border-bottom: 1px solid #ddd;
+      # border-bottom: 1px solid #ddd;
       cursor: pointer;
 
       &::before {
@@ -79,11 +86,11 @@ trix-toolbar {
       top: 0;
       left: 0;
       right: 0;
-      padding: 12px 8px;
+      padding: 4px;
       line-height: 12px;
       background: #fff;
       box-shadow: 0 0.3rem 1rem #ccc;
-      border-top: 2px solid #888;
+      border-bottom: 2px solid #888;
       border-radius: 5px;
       z-index: 5;
 
@@ -91,7 +98,8 @@ trix-toolbar {
         font-size: 12px;
         height: 24px;
         width: 50px;
-        padding: 1px 8px 0 8px;
+        padding: 4px;
+        margin: 0px 2px;
         width: auto;
         opacity: .6;
         -webkit-appearance: none;
