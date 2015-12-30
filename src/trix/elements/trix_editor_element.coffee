@@ -83,7 +83,7 @@ Trix.registerElement "trix-editor", do ->
         toolbarId = "trix-toolbar-#{@trixId}"
         @setAttribute("toolbar", toolbarId)
         element = makeElement("trix-toolbar", id: toolbarId)
-        @parentElement.insertBefore(element, this)
+        @parentElement.insertBefore(element, this.nextSibling)
         element
 
   inputElement:
